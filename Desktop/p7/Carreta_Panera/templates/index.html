@@ -10,61 +10,73 @@
 </head>
 <body>
     <body class="bg-gray-100">
-        <header class="bg-black ">
+        <header class="bg-blue-500">
             <nav>
-                <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-                    <!-- Logo -->
-                    <div class="flex items-center">
-                        <img src="{{ url_for('static', filename='imagenes/logo.jpeg') }}" alt="Logo" class="h-20">
-                    </div>
-                    <!-- Menú desplegable -->
-                    <div class="">
-                        <ul class="flex items-center gap-[4vw]">
-                            <li>
-                                <a class="text-[#B28405]" href="#">Inicio</a>
-                            </li>
-                            <!-- Item con submenú -->
-                        <li class="relative group">
-                            <a class="text-[#B28405] hover:text-amber-300 transition-colors cursor-pointer flex items-center">
-                                Productos
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </a>
-                            <!-- Submenú desplegable -->
-                            <ul class="absolute hidden group-hover:block bg-black py-2 px-4 rounded shadow-lg min-w-[180px] z-10">
-                                <li>
-                                    <a class="block text-[#B28405] hover:text-amber-300 py-1 transition-colors" href="#">Pan saludable</a>
-                                </li>
-                                <li>
-                                    <a class="block text-[#B28405] hover:text-amber-300 py-1 transition-colors" href="#">Pan dulce</a>
-                                </li>
-                            </ul>
-                        </li>
-                            <li>
-                                <a class="text-[#B28405]" href="#">Ubicación</a>
-                            </li>
-                            <li>
-                                <a class="text-[#B28405]" href="#">Nosotros</a>
-                            </li>
-                            <li>
-                                <a class="text-[#B28405]" href="#">Contacto</a>
-                            </li>
-                        </ul>
-                    </div>
+              <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <!-- Logo (comentado en tu código original, puedes descomentar y agregar la ruta de la imagen) -->
+                <!-- <div class="flex items-center">
+                  <img src="{{ url_for('static', filename='imagenes/logo.jpeg') }}" alt="Logo" class="h-20">
+                </div> -->
+          
+                <!-- Menú desplegable -->
+                <div class="relative">
+                  <!-- Ícono de hamburguesa (visible solo en pantallas pequeñas) -->
+                  <button id="menu-toggle" class="sm:hidden text-black p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                  </button>
+          
+                  <!-- Menú de navegación (visible en pantallas grandes y cuando se hace clic en el ícono en pantallas pequeñas) -->
+                  <ul id="menu" class="absolute left-0 hidden bg-blue-500 text-white p-4 rounded shadow-lg min-w-[180px] z-10 sm:block sm:relative sm:flex sm:space-x-4">
+                    <li><a class="hover:text-amber-300 transition-colors cursor-pointer" href="#">Inicio</a></li>
+                    
+                    <!-- Submenú Productos -->
+                    <li class="relative group">
+                      <a class="hover:text-amber-300 transition-colors cursor-pointer flex items-center">
+                        Productos
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </a>
+                      <!-- Submenú desplegable -->
+                      <ul class="absolute hidden group-hover:block bg-blue-500 py-2 px-4 rounded shadow-lg min-w-[180px] z-10">
+                        <li><a class="hover:text-amber-300 py-1 transition-colors" href="#">Pan saludable</a></li>
+                        <li><a class="hover:text-amber-300 py-1 transition-colors" href="#">Pan dulce</a></li>
+                      </ul>
+                    </li>
+          
+                    <li><a class="hover:text-amber-300 transition-colors cursor-pointer" href="#">Ubicación</a></li>
+                    <li><a class="hover:text-amber-300 transition-colors cursor-pointer" href="#">Nosotros</a></li>
+                    <li><a class="hover:text-amber-300 transition-colors cursor-pointer" href="#">Contacto</a></li>
+                  </ul>
                 </div>
+              </div>
             </nav>
-        </header>
+          </header>
+          
+          <!-- JavaScript para alternar la visibilidad del menú en pantallas pequeñas -->
+          <script>
+            // Obtener el botón y el menú
+            const menuToggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
+          
+            // Añadir un evento de clic al botón de hamburguesa
+            menuToggle.addEventListener('click', () => {
+              // Alternar la visibilidad del menú
+              menu.classList.toggle('hidden');
+            });
+          </script>
         <!-- Carrusel -->
-        <div class="carousel-container relativegit">
+        <!-- <div class="carousel-container relativegit">
             <div class="Carousel-inner">
                 <div>Slide 1</div>
                 <div>Slide 2</div>
                 <div>slide 3</div>
-            </div>
+            </div> -->
+            <!-- <button></button>
             <button></button>
-            <button></button>
-        </div>
+        </div> -->
 
         <!-- Script para el menú desplegable -->
         <script>

@@ -1,9 +1,9 @@
 from flask import Flask, render_template
-from flask_tailwind import tailwind
+from flask_tailwind import Tailwind
 
 app = Flask(__name__)
 
-tailwind = tailwind(app)
+tailwind = Tailwind(app)
 
 @app.route('/')
 def index():
