@@ -1,79 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carreta Panera</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <body class="bg-gray-100">
-        <header class="bg-black ">
-            <nav>
-                <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-                    <!-- Logo -->
-                    <div class="flex items-center">
-                        <img src="{{ url_for('static', filename='imagenes/logo.jpeg') }}" alt="Logo" class="h-20">
-                    </div>
-        
-                    <!-- Menú desplegable -->
-                     <div class="">
-                        <ul class="flex items-center gap-[4vw]">
-                            <li>
-                                <a class="text-[#B28405]" href="#">Inicio</a>
-                            </li>
-                            <!-- Item con submenú -->
-                        <li class="relative group">
-                            <a class="text-[#B28405] hover:text-amber-300 transition-colors cursor-pointer flex items-center">
-                                Productos
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </a>
-                            <!-- Submenú desplegable -->
-                            <ul class="absolute hidden group-hover:block bg-black py-2 px-4 rounded shadow-lg min-w-[180px] z-10">
-                                <li>
-                                    <a class="block text-[#B28405] hover:text-amber-300 py-1 transition-colors" href="#">Pan saludable</a>
-                                </li>
-                                <li>
-                                    <a class="block text-[#B28405] hover:text-amber-300 py-1 transition-colors" href="#">Pan dulce</a>
-                                </li>
-                            </ul>
-                        </li>
-                            <li>
-                                <a class="text-[#B28405]" href="#">Ubicación</a>
-                            </li>
-                            <li>
-                                <a class="text-[#B28405]" href="#">Nosotros</a>
-                            </li>
-                            <li>
-                                <a class="text-[#B28405]" href="#">Contacto</a>
-                            </li>
-                        </ul>
-                     </div>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
 
-                </div>
-            </nav>
-        </header>
+  <body class="bg-gray-100">
+    <header class="bg-gray-800">
+      <nav>
+        <div
+          class="container mx-auto px-4 py-3 flex justify-between items-center"
+        >
+          <!-- Logo (comentado en tu código original, puedes descomentar y agregar la ruta de la imagen) -->
+          <!-- <div class="flex items-center">
+                  <img src="{{ url_for('static', filename='imagenes/logo.jpeg') }}" alt="Logo" class="h-20">
+                </div> -->
 
-        <!-- Script para el menú desplegable -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const productosItem = document.querySelector('li.relative.group');
-                const submenu = productosItem.querySelector('ul');
-                
-                // Asegurar que el submenú permanezca abierto mientras el cursor está en él
-                submenu.addEventListener('mouseenter', function() {
-                    this.classList.remove('hidden');
-                });
-                
-                submenu.addEventListener('mouseleave', function() {
-                    this.classList.add('hidden');
-                });
-            });
-        </script>
-    </body>
-</body>
+          <!-- Menú desplegable -->
+          <div class="relative">
+            <!-- Ícono de hamburguesa (visible solo en pantallas pequeñas) -->
+            <button id="menu-toggle" class="sm:hidden text-black p-2">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+
+            <!-- Menú de navegación (visible en pantallas grandes y cuando se hace clic en el ícono en pantallas pequeñas) -->
+            <ul
+              id="menu"
+              class="absolute left-0 hidden bg-gray-800 text-white p-4 rounded shadow-lg min-w-[180px] z-10 sm:block sm:relative sm:flex sm:space-x-4"
+            >
+              <li>
+                <a
+                  class="hover:text-amber-300 transition-colors cursor-pointer"
+                  href="#"
+                  >Inicio</a
+                >
+              </li>
+
+              <!-- Submenú Productos -->
+              <li class="relative group">
+                <a
+                  class="hover:text-amber-300 transition-colors cursor-pointer flex items-center"
+                >
+                  Productos
+                  <svg
+                    class="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </a>
+                <!-- Submenú desplegable -->
+                <ul
+                  class="absolute hidden group-hover:block bg-gray-800 py-2 px-4 rounded shadow-lg min-w-[180px] z-10"
+                >
+                  <li>
+                    <a
+                      class="hover:text-amber-300 py-1 transition-colors"
+                      href="#"
+                      >Pan saludable</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:text-amber-300 py-1 transition-colors"
+                      href="#"
+                      >Pan dulce</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <a
+                  class="hover:text-amber-300 transition-colors cursor-pointer"
+                  href="#"
+                  >Ubicación</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-amber-300 transition-colors cursor-pointer"
+                  href="#"
+                  >Nosotros</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-amber-300 transition-colors cursor-pointer"
+                  href="#"
+                  >Contacto</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <button
+            id="cambiar"
+            class="bg-emerald-800 text-center text-white py-6 px-4"
+          >
+            texto original
+            <p id="texto">texto original</p>
+          </button>
+          <button class="btn bg-emerald-500 text-white px-4 py-2 rounded m-2">
+            Botón 1
+          </button>
+          <button class="btn bg-emerald-700 text-white px-4 py-2 rounded m-2">
+            Botón 2
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Contenedor del carrusel
+    <div class="relative w-full h-[300px] overflow-hidden"> -->
+    <!-- Slides -->
+    <!-- <div id="carousel" class="flex transition-transform duration-500">
+        <div class="w-full h-[300px] flex-shrink-0 bg-red-500"></div>
+        <div class="w-full h-[300px] flex-shrink-0 bg-blue-500"></div>
+        <div class="w-full h-[300px] flex-shrink-0 bg-green-500"></div>
+      </div> -->
+
+    <!-- Botón Anterior -->
+    <!-- <button
+        id="prev"
+        class="absolute left-5 top-1/2 -translate-y-1/2 text-white px-4 py-2 rounded-full"
+      >
+        ◀
+      </button> -->
+
+    <!-- Botón Siguiente -->
+    <!-- <button
+        id="next"
+        class="absolute right-5 top-1/2 -translate-y-1/2 text-white px-4 py-2"
+      >
+        ▶
+      </button> -->
+    <!-- </div> -->
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+      <div>
+        <p class="mb-2">Todos los derechos reservados</p>
+        <p>Desarrollado con ❤️ por Sebastián</p>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/dom.js') }}"></script>
+  </body>
 </html>
